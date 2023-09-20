@@ -10,7 +10,7 @@
 
 int main(void)
 {
-	int len, len2;
+	int l1, l2, len, len2;
 	unsigned int ui;
 	char *addr = "Let's try to printf a simple sentencewe.";
 
@@ -20,8 +20,10 @@ int main(void)
 	_printf("%s\n", addr);
 	printf("Character:[%c]\n", 'H');
 	_printf("Character2:[%c]\n", 'H');
-	printf("Len:[%d] [%i]\n", len, len2);
-	/*_printf("Len:[%d] [%i]\n", len2, len2);*/
+	l1 = printf("Len:[%d] [%i]\n", len, len2);
+	l2 = _printf("Len:[%d] [%i]\n", len, len2);
+	printf("THEIRS: %d\n", l1);
+	_printf("Mine: %d\n", l2);
 	printf("Percent sign: %% 1\n");
 	_printf("Percent sign: %% 2\n");
 	return (0);
