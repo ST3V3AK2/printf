@@ -10,30 +10,36 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	char *str;
+	char c, *str;
 	int count = 0, n = 0, i;
 
 	va_start(args, format);
 	if (format == NULL)
 	{
 		_putchar('\n');
+		_puts("Input was NULL\n");
 		return (0);
 	}
-	for (i = 0; i != '\0'; i++)
+	for (i = 0; format[i] != '\0'; i++)
 	{
+
 		if (format[i] == '%')
 		{
 			switch (format[i + 1])
 			{
 				case 'c':
-					str = va_arg(args, int);
-					n = _putchar(str);
+					c = va_arg(args, int);
+					n = _putchar(c);
 					break;
 				case 's':
-					str = va_arg(ars, char *);
-					n = print_chars(str);
+					str = va_arg(args, char *);
+					n = _puts(str);
+					break;
+				case '%':
+					n = _putchar('%');
 					break;
 				default:
+					n = 0;
 					break;
 			}
 			i++;
@@ -44,5 +50,5 @@ int _printf(const char *format, ...)
 		count++;
 	}
 	va_end(args);
-	return (total);
+	return (count);
 }
